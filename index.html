@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>从月供反推贷款金额</title>
+</head>
+
+<body>
+    <h1 id="title"></h1>
+    <form>
+        <label for="monthlyPayment"></label>
+        <input type="number" value="3000" id="monthlyPayment" name="monthlyPayment" required>
+        <br>
+        <label for="interestRate"></label>
+        <input type="number" value="6" id="interestRate" name="interestRate" required>
+        <br>
+        <label for="months"></label>
+        <input type="number" id="months" name="months" value="30" required>
+        <select id="termUnit">
+            <option value="year" selected></option>
+            <option value="month"></option>
+        </select>
+        <br>
+        <label for="method"></label>
+        <select id="method" required>
+            <option value="principalAndInterest" selected></option>
+            <option value="interestOnly"></option>
+        </select>
+        <br>
+        <button type="button" onclick="calculatePrincipal()"></button>
+    </form>
+    <div id="result"></div>
+    <div id="amount"></div>
+    <script src="script.js"></script>
+    <script>
+        // 获取用户浏览器的语言设置
+        const userLang = navigator.language || navigator.userLanguage;
+
+        // 根据语言设置加载相应的语言资源
+        if (userLang.startsWith('zh')) {
+            document.getElementById('title').textContent = '从月供反推贷款金额';
+            document.getElementsByTagName('label')[0].textContent = '月供：';
+            document.getElementsByTagName('label')[1].textContent = '年利率：(百分之)';
+            document.getElementsByTagName('label')[2].textContent = '还款期限：';
+            document.getElementsByTagName('option')[0].textContent = '年';
+            document.getElementsByTagName('option')[1].textContent = '月';
+            document.getElementsByTagName('label')[3].textContent = '还款方式：';
+            document.getElementsByTagName('option')[2].textContent = '本息同还';
+            document.getElementsByTagName('option')[3].textContent = '只还利息';
+            document.getElementsByTagName('button')[0].textContent = '只还利息';
+            document.getElementById('result').textContent = '贷款金额为：(元)';
+        } else {
+            document.getElementById('title').textContent = 'Calculate Loan Amount from Monthly Payment';
+            document.getElementsByTagName('label')[0].textContent = 'Monthly Payment:';
+            document.getElementsByTagName('label')[1].textContent = 'Interest Rate:(%)';
+            document.getElementsByTagName('label')[2].textContent = 'Loan Term:';
+            document.getElementsByTagName('option')[0].textContent = 'year';
+            document.getElementsByTagName('option')[1].textContent = 'month';
+            document.getElementsByTagName('label')[3].textContent = 'Payment Method:';
+            document.getElementsByTagName('option')[2].textContent = 'Principal and Interest';
+            document.getElementsByTagName('option')[3].textContent = 'Interest Only';
+            document.getElementsByTagName('button')[0].textContent = 'Interest Only';
+            document.getElementById('result').textContent = 'Loan amount: ($)';
+        }
+    </script>
+</body>
+
+</html>
