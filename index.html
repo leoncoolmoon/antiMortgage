@@ -49,7 +49,7 @@
             document.getElementsByTagName('label')[3].textContent = '还款方式：';
             document.getElementsByTagName('option')[2].textContent = '本息同还';
             document.getElementsByTagName('option')[3].textContent = '只还利息';
-            document.getElementsByTagName('button')[0].textContent = '只还利息';
+            document.getElementsByTagName('button')[0].textContent = '计算';
             document.getElementById('result').textContent = '贷款金额为：(元)';
         } else {
             document.getElementById('title').textContent = 'Calculate Loan Amount from Monthly Payment';
@@ -61,9 +61,43 @@
             document.getElementsByTagName('label')[3].textContent = 'Payment Method:';
             document.getElementsByTagName('option')[2].textContent = 'Principal and Interest';
             document.getElementsByTagName('option')[3].textContent = 'Interest Only';
-            document.getElementsByTagName('button')[0].textContent = 'Interest Only';
+            document.getElementsByTagName('button')[0].textContent = 'Calculate';
             document.getElementById('result').textContent = 'Loan amount: ($)';
         }
+                // Disclaimer
+        const disclaimerZh = `免责声明：
+
+        本房贷估算器仅供参考和信息分享之用途，不构成任何形式的法律、金融或投资建议。使用者在使用本估算器时应自行承担风险，并应在需要的情况下咨询专业人士的建议。
+        
+        本估算器所提供的数据和结果仅基于用户提供的输入信息，并不能保证其准确性、完整性或可靠性。尽管我们已经采取了合理的措施来确保数据和计算的准确性，但由于市场变化、利率波动和其他因素的影响，估算结果可能会有一定的误差。
+        
+        本估算器不对任何因使用估算结果而导致的任何直接或间接损失或损害承担责任。使用者应自行承担使用本估算器带来的任何风险，并理解估算结果只是一种参考，不应作为决策的唯一依据。
+        
+        我们对本估算器的运行中断、故障或其他技术问题不承担责任。我们保留随时中断或终止估算器服务的权利，无需提前通知。
+        
+        通过使用本房贷估算器，即表示您已阅读、理解并同意接受本免责声明的所有条款和条件。如果您不同意这些条款，请不要使用本估算器。
+        
+        如有任何疑问或建议，请联系我们。`;
+
+        const disclaimerEn = `Disclaimer:
+
+        This mortgage calculator is provided for reference and informational purposes only and does not constitute any form of legal, financial, or investment advice. Users assume all risks when using this calculator and should seek advice from professionals as needed.
+        
+        The data and results provided by this calculator are based solely on the user's input information and cannot guarantee accuracy, completeness, or reliability. While reasonable efforts have been made to ensure the accuracy of the data and calculations, estimation errors may occur due to market fluctuations, interest rate changes, and other factors.
+        
+        This calculator is not liable for any direct or indirect losses or damages resulting from the use of the estimated results. Users are solely responsible for any risks associated with using this calculator and should understand that the estimated results are for reference purposes only and should not be the sole basis for decision-making.
+        
+        We are not responsible for any interruptions, malfunctions, or other technical issues with the operation of this calculator. We reserve the right to interrupt or terminate the calculator service at any time without prior notice.
+        
+        By using this mortgage calculator, you acknowledge that you have read, understood, and agreed to all the terms and conditions of this disclaimer. If you do not agree with these terms, please refrain from using this calculator.
+        
+        If you have any questions or suggestions, please contact us.`;
+
+        // Add disclaimer to the page
+        const disclaimer = userLang.startsWith('zh') ? disclaimerZh : disclaimerEn;
+        const disclaimerDiv = document.createElement('div');
+        disclaimerDiv.textContent = disclaimer;
+        document.body.appendChild(disclaimerDiv);
     </script>
 </body>
 
